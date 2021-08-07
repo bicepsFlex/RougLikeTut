@@ -17,6 +17,12 @@ class Fighter:
             results.append({'dead': self.owner})
         return results
     
+    def heal(self, amount):
+        self.hp += amount
+
+        if self.hp > self.max_hp:
+            self.hp = self.max_hp
+
     def attack(self, target):
         results= []
         damage = self.power - target.fighter.defense
@@ -28,3 +34,4 @@ class Fighter:
             results.append({'message': Message('{0} attacks {1} but deos no damage.'.format(self.owner.name.capitalize(), target.name), libtcod.white)})
         
         return results
+    
